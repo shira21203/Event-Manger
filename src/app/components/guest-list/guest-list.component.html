@@ -1,0 +1,24 @@
+<div class="guest-list">
+    <h2>Guest List</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Guest Name</th>
+          <th>Guest Email</th>
+          <th>Invite Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let guest of guests">
+          <!-- <td>{{ guest.guest_name }}</td>
+          <td>{{ guest.guest_email }}</td>
+          <td>{{ guest.invite_status }}</td> -->
+          <td>חיים</td>
+          <td>chaim8@gmail.com</td>
+          <td>אישר הגעה </td>
+        </tr>
+      </tbody>
+    </table>
+    <button mat-raised-button color="primary" routerLink="/events/{{ eventId }}/add-guest">Add Guest</button>
+  </div>
+  

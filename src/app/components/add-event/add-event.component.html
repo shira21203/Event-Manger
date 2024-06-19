@@ -1,0 +1,18 @@
+ <div class="add-event">
+  <h2>Add New Event</h2>
+  <form (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Event Name</mat-label>
+      <input matInput [(ngModel)]="event.event_name" name="event_name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Event Date</mat-label>
+      <input matInput [(ngModel)]="event.event_date" name="event_date" type="date" required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Location</mat-label>
+      <input matInput [(ngModel)]="event.location" name="location">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Save</button>
+  </form>
+</div>

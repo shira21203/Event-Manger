@@ -1,0 +1,15 @@
+<div class="add-guest">
+    <h2>Add New Guest</h2>
+    <form (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <mat-label>Guest Name</mat-label>
+        <input matInput [(ngModel)]="guest.guest_name" name="guest_name" required>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Guest Email</mat-label>
+        <input matInput [(ngModel)]="guest.guest_email" name="guest_email" type="email" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit">Save</button>
+    </form>
+  </div>
+  
