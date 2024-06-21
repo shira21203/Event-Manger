@@ -23,7 +23,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
  import { environment } from 'src/enviroment/enviroment';
 import { SignupComponent } from './components/signup/signup.component';
-import { EventDtailsComponent } from './components/event-dtails/event-dtails.component';
+ import { EventDetailsComponent } from './components/event-details/event-details.component';
  
   
 
@@ -38,7 +38,7 @@ import { EventDtailsComponent } from './components/event-dtails/event-dtails.com
     GuestListComponent,
     AddGuestComponent,
     SignupComponent,
-    EventDtailsComponent
+    EventDetailsComponent
   ],
   imports: [
     HttpClientModule, 

@@ -1,0 +1,20 @@
+<div *ngIf="event" class="event-details">
+    <h2>Event Details</h2>
+    <p><strong>Event Name:</strong> {{ event.event_name }}</p>
+    <p><strong>Event Date:</strong> {{ event.event_date | date }}</p>
+    <p><strong>Location:</strong> {{ event.location }}</p>
+  
+    <hr>
+  
+    <h3>Guest List</h3>
+    <app-guest-list  ></app-guest-list>
+    <!-- <app-guest-list [guests]="guests"></app-guest-list> -->
+
+    <hr>
+  
+    <h3>Add New Guest</h3>
+    <!-- <app-add-guest (guestAdded)="onGuestAdded($event)" [eventId]="eventId"></app-add-guest> -->
+    <app-add-guest   ></app-add-guest>
+
+</div>
+  

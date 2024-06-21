@@ -6,15 +6,23 @@ import { Guest } from '../models/guest.model';
   providedIn: 'root'
 })
 export class GuestService {
-  private apiUrl = 'http://localhost:3000/api/guests'; // Update with your API endpoint
+  private apiUrl = 'http://localhost:3000/api/guests'; // Update with your backend API endpoint
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  getGuestsByEvent(eventId: number): Observable<Guest[]> {
+  getGuestsByEventId(eventId: number): Observable<Guest[]> {
     return this.http.get<Guest[]>(`${this.apiUrl}/event/${eventId}`);
   }
 
-  addGuestToEvent(eventId: number, guest: Guest): Observable<Guest> {
-    return this.http.post<Guest>(`${this.apiUrl}/event/${eventId}`, guest);
+  addGuest(guest: Guest): Observable<Guest> {
+    return this.http.post<Guest>(this.apiUrl, guest);
+  }
+
+  updateGuest(guest: Guest): Observable<Guest> {
+    return this.http.put<Guest>(`${this.apiUrl}/${guest.guest_id}`, guest);
+  }
+
+  deleteGuest(guestId: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${guestId}`);
   }
 }

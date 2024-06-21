@@ -9,20 +9,28 @@ import { GuestService } from 'src/app/services/guest.service';
   styleUrls: ['./add-guest.component.scss']
 })
 export class AddGuestComponent {
-  guest: Guest = {
-    guest_id: 0,
-    guest_name: '',
-    guest_email: ''
+  newGuest: Guest = {
+    event_id: 0, // Initialize as needed
+    name: '',
+    closeness_type: null,
+    phone_number: null,
+    email_address: null,
+    order_sent: false,
+    arrival_confirmed: false,
+    guest_count: null
   };
-  eventId: number;
 
-  constructor(private guestService: GuestService, private route: ActivatedRoute, private router: Router) {
-    this.eventId = +!this.route.snapshot.paramMap.get('id');
+  constructor(private guestService: GuestService) { }
+
+  ngOnInit(): void {
+    // Initialize component if needed
   }
 
   onSubmit(): void {
-    this.guestService.addGuestToEvent(this.eventId, this.guest).subscribe(() => {
-      this.router.navigate([`/events/${this.eventId}/guests`]);
-    });
+    this.guestService.addGuest(this.newGuest)
+      .subscribe((guest: Guest) => {
+        console.log('Guest added:', guest);
+        // Optionally, navigate to another page or refresh guest list
+      });
   }
 }

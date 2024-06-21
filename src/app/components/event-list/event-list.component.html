@@ -1,31 +1,27 @@
-<!-- event-list.component.html -->
 <div class="event-list">
-    <h2>Event List</h2>
-    <table>
-      <!-- Table headers -->
-      <thead>
-        <tr>
-          <th>Event Name</th>
-          <th>Event Date</th>
-          <th>Location</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <!-- Table body -->
-      <tbody>
-        <tr *ngFor="let event of events">
-          <!-- <td>{{ event.event_name }}</td>
-          <td>{{ event.event_date | date }}</td>
-          <td>{{ event.location }}</td> -->
-          
-          <td>חתונה ללאה</td>
-          <td>14/10/2024</td>
-          <td>אולמי וואלקן</td>
-          <td>
-            <!-- Actions such as view, edit, delete -->
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
+  <h2>Event List</h2>
+  <table>
+    <!-- Table headers -->
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Event Date</th>
+        <th>Location</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.event_name }}</td>
+        <td>{{ event.event_date | date }}</td>
+        <td>{{ event.location }}</td>
+        <td>
+          <!-- Actions such as view, edit, delete -->
+          <button>Edit</button>
+          <button>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

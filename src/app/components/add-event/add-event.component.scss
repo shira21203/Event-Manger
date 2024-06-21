@@ -1,9 +1,37 @@
 .add-event {
-    margin: 20px;
-  }
-  
-  mat-form-field {
-    display: block;
-    margin-bottom: 20px;
-  }
-  
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-event h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-label {
+  font-weight: bold;
+}
+
+mat-form-field input {
+  padding: 8px;
+  font-size: 14px;
+}
+
+mat-raised-button {
+  width: 100%;
+  margin-top: 15px;
+}
+
+mat-raised-button:hover {
+  background-color: #45a049 !important;
+}
