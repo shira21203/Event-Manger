@@ -1,0 +1,62 @@
+/* General Container */
+.home-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffe6f0; /* Light pink background */
+    font-family: 'Poppins', sans-serif; /* Modern, stylish font */
+  }
+  
+  /* Card Style */
+  .home-card {
+    background-color: #fff0f6; /* Soft pink card background */
+    border-radius: 16px; /* Rounded corners for a modern look */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    border: 2px solid #ff80bf; /* Slight border to match the theme */
+    font-family: 'Calibri Light';
+
+  }
+  
+  /* Heading */
+  .home-card h1 {
+    font-size: 36px;
+    color: #ff66a3; /* Deep pink for headings */
+    margin-bottom: 20px;
+    font-family: 'Calibri Light';
+
+  }
+  
+  /* Smart Sentence */
+  .home-card p {
+    font-size: 18px;
+    color: #333333; /* Dark grey for text */
+    margin-bottom: 30px;
+    font-family: 'Calibri Light';
+
+  }
+  
+  /* Get Started Button */
+  .get-started-button {
+    padding: 12px 24px;
+    background-color: #ff3385; /* Vibrant pink background */
+    color: #ffffff; /* White text */
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Calibri Light';
+
+  }
+  
+  /* Button Hover Effect */
+  .get-started-button:hover {
+    background-color: #ff1a75; /* Darker pink on hover */
+  }
+  

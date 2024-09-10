@@ -1,18 +1,43 @@
- <div class="add-event">
-  <h2>Add New Event</h2>
-  <form (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Event Name</mat-label>
-      <input matInput [(ngModel)]="event.event_name" name="event_name" required>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Event Date</mat-label>
-      <input matInput [(ngModel)]="event.event_date" name="event_date" type="date" required>
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label>Location</mat-label>
-      <input matInput [(ngModel)]="event.location" name="location">
-    </mat-form-field>
-    <button mat-raised-button color="primary" type="submit">Save</button>
-  </form>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>הוספת אירוע חדש</h2>
+    <form (ngSubmit)="createEvent(AddEventForm)" #AddEventForm="ngForm">
+      <div class="form-group">
+        <label for="eventName">שם האירוע</label>
+        <input type="text" id="eventName" [(ngModel)]="eventName" name="eventName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="eventDate">תאריך האירוע</label>
+        <input type="date" id="eventDate" [(ngModel)]="eventDate" name="eventDate" required />
+      </div>
+
+      <div class="form-group">
+        <label for="eventLocation">מיקום האירוע</label>
+        <input type="text" id="eventLocation" [(ngModel)]="eventLocation" name="eventLocation" required />
+      </div>
+      <div *ngIf="showErrorMessage"  class="error-message">נא מלא את כל השדות</div>
+
+
+      <button type="submit" class="auth-button"  >הוסף אירוע</button>
+    </form>
+
+    <div class="auth-footer">
+      <p><a routerLink="/home">חזור לרשימת אירועים</a></p>
+    </div>
+  </div>
+</div>
+<!-- HTML for Popup -->
+<div class="popup-overlay" *ngIf="isPopupVisible">
+  <div class="popup-content">
+    <h2>{{popupTitle}}</h2>
+    <i class="fas fa-check-circle success-icon"></i>
+    <p>{{popupMessage}}</p>
+
+    <button (click)="closePopup()">אישור</button>
+  </div>
 </div>

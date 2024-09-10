@@ -1,36 +1,48 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Event } from 'src/app/models/event.model';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Event } from 'src/app/models/Event';
+import { GetEventsByGmailRequest } from '../models/GetEventsByGmailRequest';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
+ eventData?:Event[]=[]
+isEvent:boolean=false;
+currentEvent:Event= new Event("","",new Date,"","");
 
-  private apiUrl = 'http://localhost:3000/api/Events'; // Update with your API endpoint
+  private apiUrl = 'https://localhost:44336/api/events';  // Replace with your actual API URL
 
   constructor(private http: HttpClient) {}
 
-  getEvents(): Observable<Event[]> {
-    return this.http.get<Event[]>(this.apiUrl);
+    // Get events by Gmail
+ // Method to get events by Gmail
+  getEventsByGmail(gmail: string): Observable<Event[]> {
+    const url = `${this.apiUrl}/GetEventsByGmail`;
+    const body = { GMAIL: gmail };
+    return this.http.post<Event[]>(url, body);
   }
 
-  getEventById(id: number): Observable<Event> {
-    return this.http.get<Event>(`${this.apiUrl}/${id}`);
+  // getEventsByGmail(gmail: string): Promise<Event[]|undefined> {
+  //   debugger
+  //   const url = `${this.apiUrl}/GetEventsByGmail`;
+  //   const body = { GMAIL: gmail };
+  //   // Convert Observable to Promise
+  //   return this.http.post<Event[]>(url, body).toPromise();
+  // }
+   // Add new event
+   addEvent(newEvent: Event): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}/AddEvent`, newEvent, {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    });
   }
-
-  addEvent(Event: Event): Observable<Event> {
-    return this.http.post<Event>(this.apiUrl, Event);
-  }
-
-
-  updateEvent(Event: Event): Observable<Event> {
-    return this.http.put<Event>(`${this.apiUrl}/${Event.event_id}`, Event);
-  }
-
-  deleteEvent(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  
+  // Get event by EventCode
+  getEventByEventCode(eventCode: string): Observable<Event> {
+    return this.http.get<Event>(`${this.apiUrl}/GetEventByEventCode/${eventCode}`);
   }
 }

@@ -1,41 +1,63 @@
-<div class="add-guest-form">
-  <h2>Add New Guest</h2>
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" [(ngModel)]="newGuest.name" name="name" required>
-    </div>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>הוספת אורח חדש</h2>
+    <form   #AddGForm="ngForm" (ngSubmit)="onSubmit(AddGForm)">
+      <div class="form-group">
+        <label for="guestName">שם האורח </label>
+        <input type="text" id="guestName" [(ngModel)]="guestName" name="guestName" required />
+      </div>
 
-    <div class="form-group">
-      <label for="closenessType">Closeness Type:</label>
-      <input type="text" id="closenessType" [(ngModel)]="newGuest.closeness_type" name="closeness_type">
-    </div>
+      <div class="form-group">
+        <label for="relationshipType">סוג קרבה</label>
+        <input type="text" id="relationshipType" [(ngModel)]="relationshipType" name="relationshipType" required />
+      </div>
 
-    <div class="form-group">
-      <label for="phoneNumber">Phone Number:</label>
-      <input type="text" id="phoneNumber" [(ngModel)]="newGuest.phone_number" name="phone_number">
-    </div>
+      <div class="form-group">
+        <label for="phone">מספר טלפון</label>
+        <input type="text" id="phone" [(ngModel)]="phone" name="phone" required />
+      </div>
 
-    <div class="form-group">
-      <label for="emailAddress">Email Address:</label>
-      <input type="email" id="emailAddress" [(ngModel)]="newGuest.email_address" name="email_address">
-    </div>
+      <div class="form-group">
+        <label for="email">כתובת אמייל</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required />
+      </div>
 
-    <div class="form-group">
-      <label for="orderSent">Order Sent:</label>
-      <input type="checkbox" id="orderSent" [(ngModel)]="newGuest.order_sent" name="order_sent">
-    </div>
+      <div class="form-group">
+        <label for="numPeople">מספר אנשים</label>
+        <input type="number" id="numPeople" [(ngModel)]="numPeople" name="numPeople" required />
+      </div>
 
-    <div class="form-group">
-      <label for="arrivalConfirmed">Arrival Confirmed:</label>
-      <input type="checkbox" id="arrivalConfirmed" [(ngModel)]="newGuest.arrival_confirmed" name="arrival_confirmed">
-    </div>
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <label>נשלחה הזמנה</label>
+          <input type="checkbox" [(ngModel)]="invitationSent" name="invitationSent"  />
+        </div>
+        <div class="checkbox-item">
+          <label>אישר הגעה</label>
+          <input type="checkbox" [(ngModel)]="arrivalConfirmed" name="arrivalConfirmed"  />
+        </div>
+      </div>
 
-    <div class="form-group">
-      <label for="guestCount">Guest Count:</label>
-      <input type="number" id="guestCount" [(ngModel)]="newGuest.guest_count" name="guest_count">
-    </div>
+      <div *ngIf="showErrorMessage" class="error-message">נא מלא את כל השדות</div>
 
-    <button type="submit" class="btn-submit">Add Guest</button>
-  </form>
+      <button type="submit" class="auth-button">הוסף אורח</button>
+    </form>
+    <div class="auth-footer">
+      <p><a routerLink="/event-detail">חזור לניהול אירוע </a></p>
+    </div>
+  </div>
+</div>
+<!-- HTML for Popup -->
+<div class="popup-overlay" *ngIf="isPopupVisible">
+  <div class="popup-content">
+    <h2>{{popupTitle}}</h2>
+    <i class="fas fa-check-circle success-icon"></i>
+    <p>{{popupMessage}}</p>
+
+    <button (click)="closePopup()">אישור</button>
+  </div>
 </div>

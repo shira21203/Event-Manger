@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <div class="auth-card">
+    <h2>התחברות</h2>
+    <form  (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="form-group">
+        <label for="email">כתובת אמייל</label>
+        <input type="email" id="email" [(ngModel)]="email" name="email" required />
+      </div> 
+
+      <div class="form-group">
+        <label for="password">סיסמא</label>
+        <input type="password" id="password" [(ngModel)]="password" name="password" required />
+      </div>
+      <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+      <button type="submit"  class="auth-button" [disabled]="!loginForm.valid">התחבר</button>
+    </form>
+
+    <div class="auth-footer">
+      <p>עוד לא נרשמת? <a routerLink="/register">להרשמה לחץ כאן</a></p>
+    </div>
+  </div>
+</div>

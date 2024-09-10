@@ -1,12 +1,169 @@
-.home {
-    text-align: center;
-    margin-top: 50px;
-  }
-  
-  .actions {
-    margin-top: 20px;
-  }
-  
-  button {
-    margin: 10px;
-  }
+.dashboard-container {
+  display: flex;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffe6f0; /* Light pink background */
+  height: 100vh;
+}
+
+.content-area {
+  width: 75%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  font-family: 'Calibri Light';
+
+}
+
+.sidebar {
+  width: 25%;
+  background-color: #fff0f6; /* Soft pink background */
+  padding: 20px;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1); /* Shadow on the left */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the start (left) */
+}
+
+h2 {
+  color: #ff3385; /* Vibrant pink */
+  margin-bottom: 20px;
+  text-align: center; /* Ensure title is aligned to the left within the sidebar */
+  width: 100%;
+  font-family: 'Calibri Light';
+
+}
+
+h1 {
+  color: #ff3385;
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-family: 'Calibri Light';
+
+}
+
+p {
+  color: #666;
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  text-align: center;
+  font-family: 'Calibri Light';
+
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%; /* Full width of the sidebar */
+  font-family: 'Calibri Light';
+
+}
+
+.event-item {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Calibri Light';
+
+  align-items: center;
+}
+
+.event-info {
+  flex: 1;
+}
+
+.event-item h3 {
+  color: #ff3385; /* Pink text color */
+  margin: 0 0 5px 0;
+  font-family: 'Calibri Light';
+
+}
+
+.event-item p {
+  margin: 0;
+  font-family: 'Calibri Light';
+
+  color: #666;
+}
+
+.manage-event-button {
+  background-color: #ff3385; /* Pink button */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: 'Calibri Light';
+
+}
+
+.manage-event-button:hover {
+  background-color: #e62e7a; /* Darker pink on hover */
+}
+
+.fab-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fab {
+  background-color: #ff3385; /* Pink button */
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-bottom: 10px;
+  font-family: 'Calibri Light';
+
+}
+
+.fab:hover {
+  background-color: #e62e7a; /* Darker pink on hover */
+}
+
+.fab i {
+  font-size: 2rem; /* Adjust size as needed */
+}
+
+.fab-label {
+  color: #ff3385;
+  font-size: 1.2rem;
+  font-family: 'Calibri Light';
+
+}
+.no-events-message {
+  background-color: #ffe6f0; /* Light pink background matching the overall theme */
+  border: 2px dashed #ff3385; /* Pink dashed border for emphasis */
+  color: #ff3385; /* Pink text color */
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 20px;
+  font-family: 'Calibri Light';
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.no-events-message h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-family: 'Calibri Light';
+}

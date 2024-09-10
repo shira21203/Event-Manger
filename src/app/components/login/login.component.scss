@@ -22,16 +22,18 @@
 
 /* Form Heading */
 .auth-card h2 {
-  font-family: 'Calibri Light';
   margin-bottom: 24px;
   font-size: 28px;
   color: #ff66a3; /* Deep pink for headings */
+
+  font-family: 'Calibri Light';
+
 }
 
 /* Form Group */
 .form-group {
   margin-bottom: 20px;
-  text-align: right;
+  text-align:right;
 }
 
 /* Label Styling */
@@ -40,12 +42,8 @@
   margin-bottom: 8px;
   color: #ff3385; /* Pink label color */
   font-weight: 600;
-}
-/* Error Message Styling */
-.error-message {
-  color: #ff1a75; /* Darker pink for error messages */
-  font-weight: bold;
-  margin-top: 10px;
+  font-family: 'Calibri Light';
+
 }
 
 /* Input Field */
@@ -56,7 +54,9 @@
   border: 1px solid #ff80bf; /* Pink border */
   box-sizing: border-box;
   font-size: 16px;
+  font-family: 'Calibri Light';
   text-align: right;
+
 }
 
 /* Button Styling */
@@ -71,6 +71,8 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'Calibri Light';
+
 }
 
 /* Button Hover Effect */
@@ -81,6 +83,8 @@
 /* Footer Styling */
 .auth-footer {
   margin-top: 24px;
+  font-family: 'Calibri Light';
+
 }
 
 /* Link Styling */
@@ -88,52 +92,10 @@
   color: #ff3385; /* Pink link color */
   text-decoration: none;
   font-weight: bold;
+  font-family: 'Calibri Light';
+
 }
 
 .auth-footer a:hover {
   text-decoration: underline;
-}
-/* Popup Overlay */
-.popup-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Popup Content */
-.popup-content {
-  background-color: #fff0f6; /* Light pink background */
-  border-radius: 16px;
-  padding: 20px;
-  text-align: center; /* Right-to-left text alignment */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  width: 80%;
-  max-width: 400px;
-}
-
-/* Popup Button */
-.popup-content button {
-  background-color: #ff3385; /* Pink background */
-  color: #ffffff; /* White text */
-  border: none;
-  border-radius: 8px;
-  padding: 10px 20px;
-  cursor: pointer;
-  font-size: 16px;
-  margin-top: 10px;
-  float: left; /* Align button to the left */
-  
-}
-.success-icon {
-  color: #ff3385; /* Pink color */
-  font-size: 48px; /* Size of the icon */
-  margin-bottom: 10px; /* Space between icon and text */
-  display: block;
-  text-align: center;
 }

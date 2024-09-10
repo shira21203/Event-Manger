@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Guest } from 'src/app/models/guest.model';
 import { EventService } from 'src/app/services/event.service';
 import { GuestService } from 'src/app/services/guest.service';
-import { Event } from 'src/app/models/event.model';
+import { Event } from 'src/app/models/Event';
 
 @Component({
   selector: 'app-event-details',
@@ -11,40 +11,52 @@ import { Event } from 'src/app/models/event.model';
   styleUrls: ['./event-details.component.scss']
 })
 export class EventDetailsComponent {
-  event!: Event;
-  guests!: Guest[];
-  eventId!: number;
+ 
+  guests: Guest[] = [];
+  totalPeople: number = 0;
+  totalInvitations: number = 0;
+  totalArrivalConfirmed: number = 0;
+  event:any
 
-  constructor(
-    private route: ActivatedRoute,
-    private eventService: EventService,
-    private guestService: GuestService
-  ) {}
+  constructor(private route: ActivatedRoute,public router:Router, public  eventService: EventService,public guestServe:GuestService) {}
 
-  ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.eventId = +!params.get('eventId');
-      this.getEventDetails();
-      this.getGuests();
-    });
-  }
+  ngOnInit(): void {   this.route.queryParams.subscribe(params => {
+    const eventParam = params['event'];
+    if (eventParam) {
+      this.event = JSON.parse(eventParam);
+      this.eventService.currentEvent.EventCode= this.event.EventCode;
+      this.eventService.currentEvent.EventLocation=this.event.EventLocation
+      this.eventService.currentEvent.EventDate=this.event.EventDate
+      this.eventService.currentEvent.EventName=this.event.EventName
 
-  getEventDetails(): void {
-    this.eventService.getEventById(this.eventId)
-      .subscribe((event: Event) => {
-        this.event = event;
+     
+      // Fetch guests or other details based on this.event
+    } else {
+      // Handle missing event data
+      console.error('No event data found');
+    }
+  });
+
+    // Fetch the event and guest details based on the event code
+    this.getGuestsByEventCode( this.eventService.currentEvent.EventCode);}
+    
+    calculateSummary() {
+      this.totalPeople = this.guests.reduce((acc, guest) => acc + (guest.NumPeople ?? 0), 0);
+      this.totalInvitations = this.guests.filter(guest => guest.InvitationSent).length;
+      this.totalArrivalConfirmed = this.guests.filter(guest => guest.ArrivalConfirmed).length;
+    }
+    getGuestsByEventCode(EventCode: string) {
+      this.guestServe.getGuestsByEventCode( this.eventService.currentEvent.EventCode).subscribe((data) => {
+        debugger
+        this.guests = data; 
+        this.calculateSummary()  
       });
-  }
+    }
+    goToHome() {
+      this.router.navigate(['/home']);
+    }
 
-  getGuests(): void {
-    this.guestService.getGuestsByEventId(this.eventId)
-      .subscribe((guests: Guest[]) => {
-        this.guests = guests;
-      });
-  }
 
-  onGuestAdded(guest: Guest): void {
-    // Update guest list after adding a new guest
-    this.guests.push(guest);
-  }
-}
+  addGuest() {
+    this.router.navigate( [ "/add-guest"]);
+  }}

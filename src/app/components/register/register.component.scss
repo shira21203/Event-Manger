@@ -18,20 +18,23 @@
   max-width: 400px;
   text-align: center;
   border: 2px solid #ff80bf; /* Slight border to match the theme */
+  font-family: 'Calibri Light';
+
 }
 
 /* Form Heading */
 .auth-card h2 {
-  font-family: 'Calibri Light';
   margin-bottom: 24px;
   font-size: 28px;
   color: #ff66a3; /* Deep pink for headings */
+  font-family: 'Calibri Light';
+
 }
 
 /* Form Group */
 .form-group {
   margin-bottom: 20px;
-  text-align: right;
+  text-align:right ;
 }
 
 /* Label Styling */
@@ -40,6 +43,8 @@
   margin-bottom: 8px;
   color: #ff3385; /* Pink label color */
   font-weight: 600;
+  font-family: 'Calibri Light';
+
 }
 /* Error Message Styling */
 .error-message {
@@ -47,7 +52,6 @@
   font-weight: bold;
   margin-top: 10px;
 }
-
 /* Input Field */
 .form-group input {
   width: 100%;
@@ -55,8 +59,9 @@
   border-radius: 8px;
   border: 1px solid #ff80bf; /* Pink border */
   box-sizing: border-box;
-  font-size: 16px;
+  font-family: 'Calibri Light';
   text-align: right;
+  font-size: 16px;
 }
 
 /* Button Styling */
@@ -71,6 +76,8 @@
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+  font-family: 'Calibri Light';
+
 }
 
 /* Button Hover Effect */

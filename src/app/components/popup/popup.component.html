@@ -1,0 +1,9 @@
+<!-- HTML for Popup -->
+<div class="popup-overlay" *ngIf="isPopupVisible">
+    <div class="popup-content">
+      <h2>{{popupTitle}}</h2>
+      <p>{{popupMessage}}</p>
+      <button (click)="closePopup()">אוקי</button>
+    </div>
+  </div>
+  

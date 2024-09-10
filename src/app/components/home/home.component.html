@@ -1,7 +1,34 @@
-<div class="home">
-    <h1>Welcome to the Event Management System</h1>
-    <div class="actions">
-      <button mat-raised-button color="primary" (click)="goToEventList()">View Event List</button>
-      <button mat-raised-button color="accent" (click)="goToAddEvent()">Add New Event</button>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<div class="dashboard-container">
+  <div class="content-area">
+    <h1> ! {{ this.userServe.currentuser.Fname }} ברוך הבא </h1>
+    <p>נהל את האירועים הקרובים שלך ועקוב אחר רשימות האורחים שלך..</p>
+    <div class="fab-container">
+      <button class="fab" (click)="GoToAdd()">
+        <i class="fas fa-plus"></i>
+      </button>
+      <p class="fab-label">הוסף אירוע</p>
     </div>
   </div>
+
+  <div class="sidebar">
+    <h2>האירועים הבאים שלך</h2>
+    <div class="event-list">
+      <div class="event-item" *ngFor="let event of this.eventServe.eventData">
+        <div class="event-info">
+          <h3>{{ event.EventName }}</h3>
+          <p>{{ event.EventDate | date }}</p>
+          <p>{{ event.EventLocation }}</p>
+        </div>
+        <button class="manage-event-button" (click)="OnOpenEventDetails(event)">
+          <i class="fas fa-cogs"></i> נהל אירוע
+        </button>
+      </div>
+    </div>
+    <div *ngIf="events.length === 0" class="no-events-message">
+      <h3>להתחלת פעילות לחץ על הוסף אירוע</h3>
+    </div>
+  </div>
+</div>
+ 

@@ -1,20 +1,80 @@
-<div *ngIf="event" class="event-details">
-    <h2>Event Details</h2>
-    <p><strong>Event Name:</strong> {{ event.event_name }}</p>
-    <p><strong>Event Date:</strong> {{ event.event_date | date }}</p>
-    <p><strong>Location:</strong> {{ event.location }}</p>
-  
-    <hr>
-  
-    <h3>Guest List</h3>
-    <app-guest-list  ></app-guest-list>
-    <!-- <app-guest-list [guests]="guests"></app-guest-list> -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
+<div class="event-details-page">
+  <div class="event-details-container">
+    <div class="event-summary">
+      
+      <div class="summary-content">
+        <h1>{{ this.eventService.currentEvent.EventName }}</h1>
+        <p><strong>תאריך:</strong> {{ this.eventService.currentEvent.EventDate | date: 'longDate' }}</p>
+      
+        <p><strong>מקום האירוע:</strong> {{ this.eventService.currentEvent.EventLocation }}</p>
+      </div>
+      <div class="summary-table-container">
+        <h4>סיכום</h4>
+        <table class="summary-table">
+          <tbody>
+            <tr>
+              <td>סה"כ אנשים:</td>
+              <td>{{ totalPeople }}</td>
+            </tr>
+            <tr>
+              <td>סה"כ מוזמנים:</td>
+              <td>{{ totalInvitations }}</td>
+            </tr>
+            <tr>
+              <td>אישרו הגעה:</td>
+              <td>{{ totalArrivalConfirmed }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-    <hr>
-  
-    <h3>Add New Guest</h3>
-    <!-- <app-add-guest (guestAdded)="onGuestAdded($event)" [eventId]="eventId"></app-add-guest> -->
-    <app-add-guest   ></app-add-guest>
+    </div>
 
+    <div class="guest-list-section">
+      <h3>האורחים שלך</h3>
+      <table class="guest-table">
+        <thead>
+          <tr>
+            <th>שם האורח</th>
+            <th>סוג קרבה</th>
+            <th>מספר טלפון</th>
+            <th>כתובת אמייל</th>
+            <th>כמות אנשים</th>
+            <th>נשלחה הזמנה</th>
+            <th>אישר הגעה</th>
+           </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let guest of guests">
+            <td>{{ guest.GuestName }}</td>
+            <td>{{ guest.RelationshipType }}</td>
+            <td>{{ guest.Phone }}</td>
+            <td>{{ guest.Email }}</td>
+            <td>{{ guest.NumPeople }}</td>
+            <td><input type="checkbox" [(ngModel)]="guest.InvitationSent" /></td>
+            <td><input type="checkbox" [(ngModel)]="guest.ArrivalConfirmed" /></td> 
+          </tr>
+        </tbody>
+      </table>
+      
+      <!-- Summary Table -->
+    
+      <div class="fab-container">
+        <button class="fab" (click)="addGuest()">
+          <i class="fas fa-plus"></i>
+        </button>
+        <p class="fab-label">הוסף אורח</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="back-button" (click)="goToHome()">
+      <i class="fas fa-arrow-left"></i> חזור לדף הבית
+    </button>
+  </div>
 </div>
-  

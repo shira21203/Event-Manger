@@ -1,28 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Guest } from '../models/guest.model';
 @Injectable({
   providedIn: 'root'
 })
 export class GuestService {
-  private apiUrl = 'http://localhost:3000/api/guests'; // Update with your backend API endpoint
+  private apiUrl = 'https://localhost:44336/api/guests'; // Update with your backend API endpoint
 
   constructor(private http: HttpClient) { }
 
-  getGuestsByEventId(eventId: number): Observable<Guest[]> {
-    return this.http.get<Guest[]>(`${this.apiUrl}/event/${eventId}`);
+  // Method to get guests by event code
+  getGuestsByEventCode(eventCode: string): Observable<Guest[]> {
+    const url = `${this.apiUrl}/GetGuestsEventCode/${eventCode}`;
+    return this.http.post<Guest[]>(url, {});
   }
 
-  addGuest(guest: Guest): Observable<Guest> {
-    return this.http.post<Guest>(this.apiUrl, guest);
-  }
-
-  updateGuest(guest: Guest): Observable<Guest> {
-    return this.http.put<Guest>(`${this.apiUrl}/${guest.guest_id}`, guest);
-  }
-
-  deleteGuest(guestId: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${guestId}`);
+  // Method to add a guest
+  addGuest(guest: Guest): Observable<string> {
+    const url = `${this.apiUrl}/AddGuest`;
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post<string>(url, guest, { headers });
   }
 }
